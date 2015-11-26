@@ -1,10 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="VisitSite:war exploded">
+  <artifact type="war" build-on-make="true" name="VisitSite:war exploded">
     <output-path>$PROJECT_DIR$/target/VisitSite</output-path>
-    <root id="root">
+    <root id="archive" name="VisitSite_war exploded.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="VisitSite" />
+          <element id="jpa-descriptors" facet="VisitSite/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.37" />
@@ -23,6 +24,7 @@
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.1.RELEASE" />
+          <element id="library" level="project" name="JPA 2.0-2.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

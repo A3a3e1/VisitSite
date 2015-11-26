@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/")
@@ -23,11 +25,13 @@ public class HelloController {
 		factory = Persistence.createEntityManagerFactory("persistenceUnit");
 	}
 
-	@RequestMapping("/{pagename}")
-	public ModelAndView showPage(@PathVariable("pagename") String name) {
+	@RequestMapping(value = "/{pagename}", method = RequestMethod.GET)
+	public ModelAndView showPage(@PathVariable("pagename") String name,
+								 HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		System.out.println("===========\nInput relative address: " + name + "\n" +
-				"Page content from db: " + getPageByURL(name).getContent() + "\n========");
+				"Page content from db: " + getPageByURL(name).getContent() + "\n" +
+				"Source ip address: " + request.getRemoteAddr() + "\n========");
 		modelAndView.addObject("page", getPageByURL(name));
 		return modelAndView;
 	}
